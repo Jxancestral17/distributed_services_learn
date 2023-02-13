@@ -22,7 +22,7 @@ func NewHTTPServer(addr string) *http.Server {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", httpsrv.handleProduce).Methods("POST")
-	r.HandleFunc("/", httpsrv.handleProduce).Methods("GET")
+	r.HandleFunc("/", httpsrv.handleConsume).Methods("GET")
 
 	return &http.Server{
 		Addr:    addr,
@@ -48,22 +48,22 @@ Registro che il server usa per ogni call di API
 POST
 */
 type ProduceRequest struct {
-	Record Record `json: "record"`
+	Record Record `json:"record"`
 }
 
 type ProduceResponse struct {
-	Offset uint64 `json: "offset"`
+	Offset uint64 `json:"offset"`
 }
 
 /*
 GET
 */
 type ConsumeRequest struct {
-	Offset uint64 `json: "offset"`
+	Offset uint64 `json:"offset"`
 }
 
 type ConsumeResponse struct {
-	Record Record `json: "record"`
+	Record Record `json:"record"`
 }
 
 /*
