@@ -45,6 +45,10 @@
 
 Clone the project & setup GOLang
 
+* Terminal
+  ```
+  go run main.go
+  ```
 
 
 * Terminal
